@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipSync - 24Hr Secure Clipboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <main class="glass-container">
+        <header>
+            <h1>Clip<span class="highlight">Sync</span></h1>
+            <p>Secure, ephemeral clipboard. Auto-destructs in 24 hours.</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('create')">Create Clip</button>
+            <button class="tab-btn" onclick="switchTab('retrieve')">Retrieve Clip</button>
+        </div>
+
+        <section id="create-view" class="view active">
+            <textarea id="clip-text" placeholder="Paste your text here..."></textarea>
+            <button class="action-btn" id="create-btn">Generate Clip Code ✨</button>
+            <div id="create-result" class="result hidden">
+                <p>Share your clip:</p>
+                <div class="code-box">
+                    <span id="clip-code-display" style="margin-right: auto; padding-right: 15px; font-size: 1.5rem; font-weight: 600; color: var(--accent); letter-spacing: 2px;"></span>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="copy-btn" style="background: var(--primary);" onclick="copyCode()">Copy Code</button>
+                        <button class="copy-btn" onclick="copyLink()">Copy Link 🔗</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="retrieve-view" class="view hidden">
+            <input type="text" id="retrieve-code" placeholder="Enter your 6-character code" maxlength="6">
+            <button class="action-btn" id="retrieve-btn">Get Clip 🔍</button>
+            <div id="retrieve-result" class="result hidden">
+                <textarea id="retrieved-text" readonly></textarea>
+                <button class="action-btn secondary" onclick="copyRetrieved()">Copy Text</button>
+            </div>
+        </section>
+
+        <div id="notification" class="notification hidden">✅ Copied!</div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
